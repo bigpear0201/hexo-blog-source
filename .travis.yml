@@ -1,27 +1,21 @@
 language: node_js
 node_js: stable
-
 install:
-  - npm install
-
+- npm install
 script:
-  - hexo g
-
+- hexo g
 after_script:
-  - cd ./public
-  - git init
-  - git config user.name "bigpear0201"
-  - git config user.email "bigpear0201@gmail.com"
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-# E: Build LifeCycle
-
+- cd ./public
+- git init
+- git config user.name "bigpear0201"
+- git config user.email "bigpear0201@gmail.com"
+- git add .
+- git commit -m "Update docs"
+- git push --force --quiet "https://${BLOG_TOKEN}@${GH_REF}" master:master
 branches:
   only:
-    - master
-
+  - master
 env:
   global:
-    - GH_REF: github.com/bigpear0201/bigpear0201.github.io.git
-    - secure: v8rncB3MIouwuk+2o7urHWTCN5O/CLXruiHLwyOj4Ar89sdQhnrso2zOfHppyRZ+SN4D/it4V7pKDqmsduX1K1MJ1aneSFm1KsZLu4+hMLS3sklOdRXAt6vk8JK8JhvQ41pKwNpYSs4txAL+h1Kph3RMUeqxo8a7G2n5UULvepPVG8fsoPr6ZIck63ScoDhs9E4BlEJa39XkuqvdeKMyUntxrk0hbDBal60wMvap7YveAaRIOSlwtBVBz5VTYkqV8A5uuTEm9jtyRfRAupISKElajGPCqKeFAT1mEL175/6lfiO87Siy6O9g0Q2rzT0NjqusuXQO3Q5TkqpwgQ1WSe5mv1x6pwy1HKu53Avj2q7ksJ542roKO+11SRSeC+q/ydyAhOTYgJgRcjUNmlaJTm5NiT4xmAJ6fbLeiQyLwR/BBUiPJp6Y5M2Pe5uwlZk9BcFE7y8tZFXnDFdjAzJ3vZOZRqtNfK2ytuR4LYf7M3Fs43TooMmLpvJs/kbmV/T9liCnBVSZQYgQqozorpQIfW+o+OVBPBnd8swzvPIosATNvWpIvYXTdHAKWdklxURr1HIT/Rs3wtL53FPdBqWoIHBwBPbycNk/qJdJxyi+e62KmzHRhHjq6cBYWMXwVJKOq4mA2iPOUEzWjJpiZ9sc+AIdMW/mxeorHpl0QOqWw04=
+  - GH_REF: github.com/bigpear0201/bigpear0201.github.io.git
+  - secure: nDxzI/sQc8HhnMPxVyzY0Y+a4zmo130rL2rPVBSWkDG2cireoznHzzFeWPCTESkYmOZocyKdORWqmGA00wzXXS9IDDidCRN+noPrPjHmUYQVaQRCSd40YFJqAh0dlQovbl1yO0UJHf+hyDImgdn5o/CNCRjEHKrWoYXckH6K3xRz/IDq+i2/U5+HSUK0nKy3lb9PQU4JfUTwma+WPSl5sJ9u77MNl6dQwk0PSVtEstsqUK+4hzXHeCEh+Nr5FeCKW31SyrIo3DdovhJ9mkEIKhRUZGY7bnBShzw9MlIkbqk0hCqxn1bhzvaa2rYqCkiS+GhFCa5Jo+ZrreNkTH3o7e+TKZRr17OXOBEDpSZeE5fHgqCD4jjyG3U1f1F3yzE3x0TLlctCpB6MFAhZezlnaPxW5Kr1IhRBNQx0DGghrIfnCGl+rMylRB1Qb3oj5O/o1pOfbhZecP49NKB6YAUsJb0ejGaVf6fJghb8TuT5XKPm80ZvYLujIiw9TSQbcr87joaBamao6gpdl/hbbJ/4e+b4hpVR4up3Ue33ykZVmTyWwHznvpOaJbi2fvJKKe4vL+cPTbGXhKv01CMo6bn72FICRQBITp2ArPKKL9GXZWwzMSYxFSomxoNExMIM7Wx9l92Grak+Myp+MvST4WtqO1PECS7oC2dlBi6fCnTq/Ao=
