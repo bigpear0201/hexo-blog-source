@@ -1,0 +1,31 @@
+sudo: false
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+before_script:
+  - git config --global user.name "bigpear0201"
+  - git config --global user.email "hanhongji@163.com"
+script:
+  # 生成静态文件
+  - npm run build
+after_script:
+  # 将生成的静态文件，初始化为 git 仓库
+  - cd public
+  - git init
+  - git config user.name "bigpear0201"
+  - git config user.email "hanhongji@163.com"
+  - git add --all
+  - git commit -m "forward"
+  # 推送到 gh-pages 分支
+  - git push --force --quiet "https://${GH_Token}@${GH_REF}" master:master
+os:
+  - osx
+env:
+  global:
+    - GH_REF: bigpear0201/bigpear0201.github.io.git
+    - secure: v8rncB3MIouwuk+2o7urHWTCN5O/CLXruiHLwyOj4Ar89sdQhnrso2zOfHppyRZ+SN4D/it4V7pKDqmsduX1K1MJ1aneSFm1KsZLu4+hMLS3sklOdRXAt6vk8JK8JhvQ41pKwNpYSs4txAL+h1Kph3RMUeqxo8a7G2n5UULvepPVG8fsoPr6ZIck63ScoDhs9E4BlEJa39XkuqvdeKMyUntxrk0hbDBal60wMvap7YveAaRIOSlwtBVBz5VTYkqV8A5uuTEm9jtyRfRAupISKElajGPCqKeFAT1mEL175/6lfiO87Siy6O9g0Q2rzT0NjqusuXQO3Q5TkqpwgQ1WSe5mv1x6pwy1HKu53Avj2q7ksJ542roKO+11SRSeC+q/ydyAhOTYgJgRcjUNmlaJTm5NiT4xmAJ6fbLeiQyLwR/BBUiPJp6Y5M2Pe5uwlZk9BcFE7y8tZFXnDFdjAzJ3vZOZRqtNfK2ytuR4LYf7M3Fs43TooMmLpvJs/kbmV/T9liCnBVSZQYgQqozorpQIfW+o+OVBPBnd8swzvPIosATNvWpIvYXTdHAKWdklxURr1HIT/Rs3wtL53FPdBqWoIHBwBPbycNk/qJdJxyi+e62KmzHRhHjq6cBYWMXwVJKOq4mA2iPOUEzWjJpiZ9sc+AIdMW/mxeorHpl0QOqWw04=
